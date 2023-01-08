@@ -1,0 +1,23 @@
+version: '3'
+services:
+    web:
+        container_name: nodejs
+        build: .
+        env_file: .env
+        restart: always
+        ports:
+            - "3000:3000"
+        depends_on:
+            - "db"
+        volumes:
+            - ./:/www
+    db:
+        container_name: db
+        image: mysql
+        restart: always
+        environment:
+            - MYSQL_ROOT_PASSWORD=root 
+            - MYSQL_DATABASE=shoessalesapp
+            - MYSQL_PASSWORD=root
+        ports:
+            - "3306:3306"
