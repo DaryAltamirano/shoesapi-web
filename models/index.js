@@ -18,8 +18,6 @@ if (process.env.NODE_ENV=="development") {
 } else {
 	configEnvDB = configDB.production
 }
-console.log(process.env.NODE_ENV)
-console.log(configEnvDB)
 sequelize = new Sequelize(
 	configEnvDB.database,
 	configEnvDB.username,

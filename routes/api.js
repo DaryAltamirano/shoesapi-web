@@ -7,7 +7,13 @@ const Compra = require('../models').compra;
 /* GET users listing. */
 router.get('/items', function(req, res, next) {
     Item.findAll({  
-        attributes: { exclude: ["updatedAt"] }  
+        attributes: {
+            exclude: [ 
+                "updatedAt",
+                "createdAt",
+                "id"
+            ]
+        },
     })  
     .then(items => {  
         res.json(items)  
@@ -18,6 +24,13 @@ router.get('/items', function(req, res, next) {
 router.get('/items/:category', function(req, res, next) {
     let categorySearch = req.params.category
     Item.findAll({  
+        attributes: {
+            exclude: [ 
+                "updatedAt",
+                "createdAt",
+                "id"
+            ]
+        },
         where:{
             category:categorySearch
         }
@@ -31,6 +44,13 @@ router.get('/items/:category', function(req, res, next) {
 router.get('/items/item/:id', function(req, res, next) {
     let id = req.params.id
     Item.findOne({  
+        attributes: {
+            exclude: [ 
+                "updatedAt",
+                "createdAt",
+                "id"
+            ]
+        },
         where:{
             idItem:id
         }

@@ -12,7 +12,13 @@ const Item = require('../models').item;
 /* GET home page. */
 router.get('/', function(req, res, next) {
   Item.findAll({  
-    attributes: { exclude: ["updatedAt"] }  
+    attributes: {
+      exclude: [ 
+          "updatedAt",
+          "createdAt",
+          "id"
+      ]
+  },
   })  
   .then(items => {  
       res.render('index', { title: 'Express', arrItems: items });  
